@@ -1,5 +1,6 @@
 const { User, Thought } = require("../models");
 const { db } = require("../models/User");
+
 const userController = {
     //get all users
     getAllUsers(req, res) {
@@ -10,14 +11,14 @@ const userController = {
             })
             .select("-__v")
             .sort({ _id: -1 })
-            .then((dbUserData) => res.json (deUserData))
+            .then((dbUserData) => res.json (dbUserData))
             .catch((err) => {
                 console.log(err);
                 res.sendStatus(400);
             });
     },
     // get user by id
-    getUserbyId({ params }, res) {
+    getUserById({ params }, res) {
         User.findOne({ _id: params.id })
             .populate({
                 path: "thoughts",
@@ -34,7 +35,7 @@ const userController = {
                         .status(404)
                         .json({ message: "No user found with this id"});
                 }
-                res.json(ddUserData);
+                res.json(dbUserData);
             })
             .catch((err) => {
                 console.log(err);
@@ -42,7 +43,7 @@ const userController = {
             });
     },
     // create user
-    createUser({ body }, res) {
+    createNewUser({ body }, res) {
         User.create(body)
         .then((dbUserData) => res.json (dbUserData))
         .catch((err) => res.json(err));

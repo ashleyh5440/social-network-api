@@ -1,6 +1,7 @@
-const { Schema, model, Types } = require("mongoose");
+const { Schema, model, Types } = require("mongoose"); //import modules
 const dateFormat = require("../utils/dateFormat");
 
+//mongoose schema for reactions
 const reactionSchema = new Schema(
     {
         reactionId: {
@@ -19,7 +20,7 @@ const reactionSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            get: (timestam) => dateFormat(timestamp),
+            get: (timestamp) => dateFormat(timestamp),
         },
     },
     {
@@ -30,6 +31,7 @@ const reactionSchema = new Schema(
     }
 );
 
+//mongoose schema for thoughts
 const ThoughtSchema = new Schema(
     {
         thoughtText: {
@@ -58,6 +60,7 @@ const ThoughtSchema = new Schema(
     }
 );
 
+//calculate number of reactions from the reactions array
 ThoughtSchema.virtual("reactionCount").get(function () {
     return this.reactions.length;
 });
