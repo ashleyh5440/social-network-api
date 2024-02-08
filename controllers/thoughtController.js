@@ -23,7 +23,7 @@ const thoughtController = {
             path: "reactions",
             select: "-__v",
         })
-        .select: "-__v",
+        .select("-__v")
         .then((dbThoughtData) => {
             if (!dbThoughtData) {
                 return res.status(404).json({ message: "No thought with this id."});
@@ -56,7 +56,7 @@ const thoughtController = {
             .catch((err) => res.json(err));
     },
     // update a thought
-    updateThought({ params, body } res) {
+    updateThought({ params, body }, res) {
         Thought.findOneAndUpdate({ _id: params.id }, body, {
             new: true,
             runValidators: true
@@ -95,7 +95,7 @@ const thoughtController = {
         .catch((err) => res.json(err));
     }, 
     //add reaction
-    addReaction({ params, body } res) {
+    addReaction({ params, body }, res) {
         Thought.findOneAndUpdate(
             { _id: params.thoughtId },
             { $addToSet: { reactions: body} },
