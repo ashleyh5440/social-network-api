@@ -16,3 +16,4 @@
   If you have any questions, you can email me at ashleyh5440@gmail.com.
   You can see more of my work at [ashleyh5440](https://github.com/ashleyh5440)
   ## Video Demo
+  [Video walk through](https://drive.google.com/file/d/1WbnnHwVLE2uLl_xI3QCH-aFm3eBiB0Hx/view)

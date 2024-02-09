@@ -36,7 +36,7 @@ module.exports = (
     };
 
     const dateObj = new Date(timestamp);
-    const formatdMonth = months[dateObj.getMonth()];
+    const formattedMonth = months[dateObj.getMonth()];
 
     const dayofMonth = dateSuffix 
         ? addDate(dateObj.getDate())
